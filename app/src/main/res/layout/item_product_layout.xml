@@ -3,8 +3,17 @@
 
     <data>
         <variable
+            name="discountVisible"
+            type="Boolean" />
+        <import
+            alias="v"
+            type="android.view.View" />
+        <variable
             name="isSelected"
             type="Boolean" />
+        <variable
+            name="price"
+            type="Double" />
         <variable
             name="data"
             type="com.iglo.common.entity.Product" />
@@ -26,6 +35,7 @@
                 android:layout_width="120dp"
                 android:layout_height="130dp"
                 android:background="@drawable/circle"
+                android:layout_marginStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:hint="Product Name"
                 android:text="@{data.productName}"
                 android:textColor="@color/black"
@@ -43,29 +53,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/diskon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
-                android:hint="Harga Diskon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/img_product"
-                app:layout_constraintTop_toBottomOf="@id/item_name" />
-
-            <TextView
                 android:id="@+id/harga"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:hint="Harga"
+                android:textColor="@color/black"
                 android:text="@{String.format(`Rp. %.2f`, data.price)}"
+                android:visibility="@{discountVisible?v.VISIBLE : v.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_product"
-                app:layout_constraintTop_toBottomOf="@id/diskon" />
+                app:layout_constraintTop_toBottomOf="@id/item_name" />
+
+            <TextView
+                android:id="@+id/diskon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="20dp"
+                android:hint="Harga Diskon"
+                android:text="@{String.format(`Rp. %.2f`, price)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/img_product"
+                app:layout_constraintTop_toBottomOf="@id/harga" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buy_button"
@@ -80,7 +94,7 @@
                 app:strokeWidth="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_product"
-                app:layout_constraintTop_toBottomOf="@id/harga" />
+                app:layout_constraintTop_toBottomOf="@id/diskon" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

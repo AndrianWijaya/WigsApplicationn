@@ -6,15 +6,17 @@
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/drawable/circle.xml" value="0.1" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/drawable/custom_edit_text_cursor.xml" value="0.1" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/drawable/image.xml" value="0.1" />
+        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout-v28/login_layout.xml" value="0.203125" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/checkout_layout.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/dummy.xml" value="0.1" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/item_checkout_layout.xml" value="0.22" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/item_product_layout.xml" value="0.25" />
-        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/list_checkout_layout.xml" value="0.14" />
+        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/list_checkout_layout.xml" value="0.25" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/list_product_layout.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/list_product_layuot.xml" value="0.18" />
-        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/login_layout.xml" value="0.25" />
-        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/product_detail_layout.xml" value="0.33" />
+        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/login_layout.xml" value="0.6878612716763006" />
+        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/product_detail_layout.xml" value="0.18" />
+        <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/app/src/main/res/layout/register_layout.xml" value="0.2" />
         <entry key="..\:/Users/1197/AndroidStudioProjects/Latihan/WigsApplicationn/common/src/main/res/layout/dummy.xml" value="0.1" />
       </map>
     </option>

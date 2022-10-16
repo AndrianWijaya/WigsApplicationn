@@ -1,7 +1,7 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import dependencies.*
 
-fun DependencyHandler.appLibraries() {
+fun DependencyHandler.  appLibraries() {
     androidX()
     glide()
     gson()
@@ -12,4 +12,5 @@ fun DependencyHandler.appLibraries() {
     retrofit()
     vmLifeCycle()
     coroutine()
+    room()
 }

@@ -1,6 +1,7 @@
 package com.iglo.wigsapplicationn.activity.product
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
@@ -8,14 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.iglo.wigsapplicationn.BR
 import com.iglo.wigsapplicationn.R
-import com.iglo.wigsapplicationn.databinding.ListProductLayoutBinding
 import com.iglo.wigsapplicationn.databinding.ProductDetailLayoutBinding
 import com.iglo.wigsapplicationn.view_model.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductDetails: AppCompatActivity() {
-    val layoutResourceId = R.layout.product_detail_layout
+class ProductDetailsActivity: AppCompatActivity() {
+    private val layoutResourceId = R.layout.product_detail_layout
     lateinit var binding: ProductDetailLayoutBinding
 
     val vm: ProductViewModel by viewModels()
@@ -31,8 +31,13 @@ class ProductDetails: AppCompatActivity() {
         binding.setVariable(BR.vm, vm)
 
         vm.productCode.value = intent.getStringExtra("PRODUCT_CODE")
-        vm.productCode.observe(this@ProductDetails){
+        vm.productCode.observe(this@ProductDetailsActivity){
             vm.getOneData(it)
+        }
+
+        binding.buyButton.setOnClickListener{
+            val intent = Intent(this@ProductDetailsActivity, ProductListActivity::class.java)
+            startActivity(intent)
         }
 
 

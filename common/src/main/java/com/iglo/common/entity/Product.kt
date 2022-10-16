@@ -1,21 +1,33 @@
 package com.iglo.common.entity
 
-import com.google.gson.annotations.SerializedName
+import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
+@Entity(tableName = "Products")
 data class Product(
-    @SerializedName("product_code")
+    @PrimaryKey
+    @field:ColumnInfo(name = "ProductCode")
     val productCode: String,
-    @SerializedName("product_name")
+
+    @field:ColumnInfo(name = "ProductName")
     val productName: String,
-    @SerializedName("price")
+
+    @field:ColumnInfo(name = "Price")
     val price: Double,
-    @SerializedName("currency")
+
+    @field:ColumnInfo(name = "Currency")
     val currency: String,
-    @SerializedName("discount")
+
+    @field:ColumnInfo(name = "Discount")
     val discount: Int,
-    @SerializedName("dimension")
+
+    @field:ColumnInfo(name = "Dimension")
     val dimension: String,
-    @SerializedName("unit")
+
+    @field:ColumnInfo(name = "Unit")
     val unit: String
-)
+) : Parcelable

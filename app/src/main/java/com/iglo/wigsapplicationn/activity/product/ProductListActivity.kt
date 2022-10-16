@@ -1,6 +1,7 @@
 package com.iglo.wigsapplicationn.activity.product
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -15,13 +16,14 @@ import com.iglo.common.helper.size
 import com.iglo.common.helper.toggle
 import com.iglo.wigsapplicationn.BR
 import com.iglo.wigsapplicationn.R
+import com.iglo.wigsapplicationn.activity.checkout.CheckoutActivity
 import com.iglo.wigsapplicationn.databinding.ListProductLayoutBinding
 import com.iglo.wigsapplicationn.view_model.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Product: AppCompatActivity() {
-    val layoutResourceId = R.layout.list_product_layout
+class ProductListActivity: AppCompatActivity() {
+    private val layoutResourceId = R.layout.list_product_layout
     lateinit var binding: ListProductLayoutBinding
 
     val vm: ProductViewModel by viewModels()
@@ -45,11 +47,22 @@ class Product: AppCompatActivity() {
 
         binding.recycler.adapter = adapter
 
-        vm.dataProduct.observe(this@Product){
+        binding.checkout.setOnClickListener {
+            vm.selection.value.orEmpty().map {
+                it.productCode
+            }.apply {
+                val intent = Intent(this@ProductListActivity, CheckoutActivity::class.java)
+                intent.putStringArrayListExtra("EXTRA_DATA", ArrayList(this))
+                startActivity(intent)
+            }
+        }
+
+
+        vm.dataProduct.observe(this@ProductListActivity){
             adapter.submitData(it.toList())
         }
 
-        vm.selection.observe(this@Product) {
+        vm.selection.observe(this@ProductListActivity) {
             actionMode ?: kotlin.run {
                 actionMode = startSupportActionMode(object : ActionMode.Callback {
                     override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
@@ -81,6 +94,8 @@ class Product: AppCompatActivity() {
             }
         }
     }
+
+
     fun startActionMode(product: com.iglo.common.entity.Product) {
         adapter.toggleSelection(product) {
             vm.selection.toggle(product)

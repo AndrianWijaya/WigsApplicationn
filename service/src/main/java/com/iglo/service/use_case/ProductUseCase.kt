@@ -13,7 +13,7 @@ class ProductUseCase {
             ),
             Product(
                 "GIBBR", "GIV Biru", 11000.00, "IDR",
-                0, "13 cm x 10cm", "PCS"
+                0, "5 cm x 10cm", "PCS"
             ),
             Product(
                 "SKUSKILD", "So Klin Liquid", 18000.00, "IDR",
@@ -21,7 +21,7 @@ class ProductUseCase {
             ),
             Product(
                 "GIVKNG", "GIV Kuning", 10000.00, "IDR",
-                0, "13 cm x 10cm", "PCS"
+                0, "5 cm x 10cm", "PCS"
             )
         )
         emit(listProductItem)

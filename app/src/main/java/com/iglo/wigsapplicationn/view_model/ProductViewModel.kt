@@ -20,6 +20,7 @@ class ProductViewModel @Inject constructor(
     val oneData = MutableLiveData<Product>()
     val productCode = MutableLiveData<String>()
     val selection = MutableLiveData<List<Product>>()
+    val subtotalMap = mutableMapOf<Product, Double>()
 
 
     init {
@@ -38,11 +39,19 @@ class ProductViewModel @Inject constructor(
         viewModelScope.launch {
             productUseCase().collect{
                 for (listProduct: Product in it){
-                    if (listProduct.productCode.equals(productCode)){
+                    if (listProduct.productCode == productCode){
                         oneData.postValue(listProduct)
                     }
                 }
             }
         }
+    }
+
+    fun getSubtotal() : Double {
+        var sum = 0.0
+        subtotalMap.forEach{
+            sum += it.value
+        }
+        return sum
     }
 }

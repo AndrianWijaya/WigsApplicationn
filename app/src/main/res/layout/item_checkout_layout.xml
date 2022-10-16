@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="totalPrice"
+            type="Double" />
+
+        <variable
+            name="data"
+            type="com.iglo.common.entity.Product" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +26,7 @@
                 android:id="@+id/img_product"
                 android:layout_width="120dp"
                 android:layout_height="130dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/circle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -23,9 +35,10 @@
                 android:id="@+id/item_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
                 android:hint="Product Name"
+                android:text="@{data.productName}"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/img_product"
@@ -38,22 +51,26 @@
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_product"
-                app:layout_constraintTop_toBottomOf="@id/item_name" >
+                app:layout_constraintTop_toBottomOf="@id/item_name">
 
                 <EditText
+                    android:id="@+id/pcs"
                     android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
                     android:gravity="center"
-                    android:hint="0"
-                    android:layout_marginLeft="20dp"
-                    android:layout_height="50dp"/>
+                    android:lines="1"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:text="@string/_1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="PCS"
+                    android:layout_marginStart="20dp"
                     android:fontFamily="@font/open_sans_regular"
-                    android:textColor="@color/black"/>
+                    android:text="@string/pcs"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -64,24 +81,36 @@
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_product"
-                app:layout_constraintTop_toBottomOf="@id/diskon" >
+                app:layout_constraintTop_toBottomOf="@id/diskon">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Sub Total: "
-                    android:fontFamily="@font/open_sans_regular"
-                    android:textColor="@color/black"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:hint="Subtotal"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="@string/sub_total"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/subtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:hint="Subtotal"
+                        android:text="@{String.format(`Rp. %.2f`, totalPrice)}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 

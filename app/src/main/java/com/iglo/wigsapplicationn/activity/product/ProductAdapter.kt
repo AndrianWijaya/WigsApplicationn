@@ -2,8 +2,8 @@ package com.iglo.wigsapplicationn.activity.product
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -30,7 +30,7 @@ class ProductAdapter(
         val data = differ.currentList[position]
         holder.binding.data = data
         holder.binding.cardViewItemProduct.setOnClickListener{
-            val intent = Intent(context, ProductDetails::class.java)
+            val intent = Intent(context, ProductDetailsActivity::class.java)
             intent.putExtra("PRODUCT_CODE", data.productCode)
             context.startActivity(intent)
         }
@@ -43,12 +43,28 @@ class ProductAdapter(
         holder.binding.buyButton.setOnClickListener {
             toggleClick(data)
         }
+
+
+
+        if (data.discount != 0) {
+            holder.binding.harga.paintFlags =  Paint.STRIKE_THRU_TEXT_FLAG
+            holder.binding.discountVisible = true
+            holder.binding.price = discount(data)
+        } else {
+            holder.binding.discountVisible = false
+            holder.binding.price = data.price
+        }
     }
 
     override fun getItemCount(): Int = differ.currentList.size
 
     fun submitData(data: List<Product>){
         differ.submitList(data)
+    }
+
+    fun discount(data: Product): Double {
+        val discount = data.discount * data.price / 100
+        return data.price - discount
     }
 
     fun clearSelection(changes: (() -> Unit)?){
